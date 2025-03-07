@@ -144,25 +144,29 @@
                 suggestion: suggestion
             };
 
-            fetch("https://script.google.com/macros/s/AKfycbwU7DLAnIcaVs8uSbECWXMI_Bd_ZccW4bmjP9wtBxFpp2UTpbKl8his32cbbkjl14ZvEw/exec", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData)
+            fetch("https://script.google.com/macros/s/AKfycbwzf61u_oMORWcFEch2bfW7kgA-yPB-VR5bPMsdZGH2Qvf4PshlytVptYQc2aCc9GY-PA/exec", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                suggestion: document.getElementById("suggestion").value
             })
-            .then(response => response.text())
-            .then(data => {
-                if (data === "Success") {
-                    alert("ההודעה נשלחה בהצלחה!");
-                    document.getElementById("name").value = "";
-                    document.getElementById("email").value = "";
-                    document.getElementById("suggestion").value = "";
-                } else {
-                    alert("שגיאה בשליחת ההודעה.");
-                }
-            })
-            .catch(error => console.error("Error:", error));
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === "Success") {
+                alert("ההודעה נשלחה בהצלחה!");
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("suggestion").value = "";
+            } else {
+                alert("שגיאה בשליחת ההודעה.");
+            }
+        })
+        .catch(error => console.error("Error:", error));
         });
     </script>
 </body>
