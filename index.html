@@ -149,22 +149,18 @@
             headers: {
                 "Content-Type": "application/json"
             },
+            mode: "no-cors",
             body: JSON.stringify({
                 name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
                 suggestion: document.getElementById("suggestion").value
             })
         })
-        .then(response => response.text())
-        .then(data => {
-            if (data === "Success") {
-                alert("ההודעה נשלחה בהצלחה!");
-                document.getElementById("name").value = "";
-                document.getElementById("email").value = "";
-                document.getElementById("suggestion").value = "";
-            } else {
-                alert("שגיאה בשליחת ההודעה.");
-            }
+        .then(() => {
+            alert("ההודעה נשלחה (ייתכן שלא תתקבל תגובת אישור)");
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("suggestion").value = "";
         })
         .catch(error => console.error("Error:", error));
         });
