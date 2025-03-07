@@ -13,7 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             direction: rtl;
             text-align: right;
         }
@@ -55,21 +55,115 @@
         .tool:hover {
             background: #003080;
         }
+        .suggestion-form {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .suggestion-form h2 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>הכלים של שחר</h1>
-        <p>ברוכים הבאים לאתר המרכז את הכלים שפיתחתי כדי להפוך את העבודה לקלה, מהירה ויעילה יותר. כאן תוכלו למצוא פתרונות לאוטומציה, ניהול משימות, יצירת דוחות ושיפור תהליכי עבודה.</p>
-        <p>המטרה שלי היא לאפשר לכל אחד לנצל את היתרונות של טכנולוגיה מתקדמת בצורה פשוטה ונגישה.</p>
+        <p>ברוכים הבאים לאתר המרכז את הכלים שפיתחתי במטרה להפוך את העבודה שלכם לקלה, מהירה ויעילה יותר. כאן תוכלו למצוא פתרונות חכמים לאוטומציה, ניהול משימות, תקשורת, עיבוד נתונים ותכנות.</p>
+        <p>הכלים באתר:</p>
         <div class="tool-list">
-            <a class="tool" href="https://shaharc94.github.io/whatsapplinker/" target="_blank">כלי ליצירת קישור ישיר לצ׳אט בווטסאפ</a>
-            <a class="tool" href="https://shaharc94.github.io/storylinegooglesheetcodeassistant/" target="_blank">כלי להעברת משתנים מסטוריליין לגוגל שיטס</a>
-            <a class="tool" href="https://shaharc94.github.io/duplicatesfinder/" target="_blank">כלי לזיהוי כפילויות בקובץ אקסל</a>
-            <a class="tool" href="https://shaharc94.github.io/automsg/automsg.html" target="_blank">כלי ליצירת הודעות טקסט לקביעת שיחה עם לקוח </a>
-            <a class="tool" href="https://shaharc94.github.io/codeeditor/" target="_blank">כלי לעריכת סקריפטים בשפות HTML, CSS, JavaScript</a>
-            <a class="tool" href="https://improve-itil.github.io/discount/" target="_blank">כלי לחישוב הנחות</a>
+            <a class="tool" href="https://github.com/shaharc/whatsapp-link-generator" target="_blank">🔗 כלי ליצירת קישור ישיר לצ׳אט בווטסאפ</a>
+            <a class="tool" href="https://github.com/shaharc/storyline-google-sheets" target="_blank">📊 כלי להעברת משתנים מסטוריליין לגוגל שיטס</a>
+            <a class="tool" href="https://github.com/shaharc/excel-duplicates-checker" target="_blank">📑 כלי לזיהוי כפילויות בקובץ אקסל</a>
+            <a class="tool" href="https://github.com/shaharc/whatsapp-quick-messages" target="_blank">📩 כלי ליצירת הודעות ווטסאפ לקביעת שיחה במהירות</a>
+            <a class="tool" href="https://github.com/shaharc/code-editor" target="_blank">💻 כלי לעריכת סקריפטים בשפות HTML, CSS, JavaScript</a>
+            <a class="tool" href="https://github.com/shaharc/discount-calculator" target="_blank">💰 כלי לחישוב הנחות</a>
+            <a class="tool" href="https://github.com/shaharc/custom-whatsapp-message" target="_blank">📝 כלי ליצירת הודעה מותאמת אישית</a>
+        </div>
+        <div class="suggestion-form">
+            <h2>יש לך רעיון לכלי חדש?</h2>
+            <p>אם יש לך רעיון לכלי שיכול לשפר תהליכי עבודה, נשמח לשמוע ממך!</p>
+            <div class="form-group">
+                <label for="name">שם מלא</label>
+                <input type="text" id="name" placeholder="הכנס את שמך">
+            </div>
+            <div class="form-group">
+                <label for="email">אימייל</label>
+                <input type="email" id="email" placeholder="הכנס את כתובת האימייל שלך">
+            </div>
+            <div class="form-group">
+                <label for="suggestion">הצעה לכלי</label>
+                <textarea id="suggestion" rows="4" placeholder="תאר את הכלי שתרצה לפתח"></textarea>
+            </div>
+            <button type="submit" id="submit-button">שלח הצעה</button>
         </div>
     </div>
+    
+    <script>
+        document.getElementById("submit-button").addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var suggestion = document.getElementById("suggestion").value;
+            
+            if (!name || !email || !suggestion) {
+                alert("נא למלא את כל השדות.");
+                return;
+            }
+
+            var formData = {
+                name: name,
+                email: email,
+                suggestion: suggestion
+            };
+
+            fetch("https://script.google.com/macros/s/AKfycbz6nG-m9KRRSlfKOP7qnelRepPWQg4c-oAu2AGJ7FxrlcpJ1iOjBLU3zqN4L6LlpO2r1w/exec", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === "Success") {
+                    alert("ההודעה נשלחה בהצלחה!");
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                    document.getElementById("suggestion").value = "";
+                } else {
+                    alert("שגיאה בשליחת ההודעה.");
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
 </body>
 </html>
