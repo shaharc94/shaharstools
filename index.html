@@ -144,6 +144,14 @@
                 suggestion: suggestion
             };
 
+            function trackClick(toolName) {
+            fetch("https://script.google.com/macros/s/AKfycbzZGXf439kWMFe91BggUFuB_idDCtIGMTpoE4qDr-gSf0FVk0GLv_iRvh8Kth3znLse/exec", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ tool: toolName })
+                });
+            }
+
             fetch("https://script.google.com/macros/s/AKfycbxuNd3J4mhKuzfXoxWtkRqAwPhXVUW2lhAIbaKqb3LV3F1J9mjk3dcDPalpCPpPPuVSCg/exec", {
             method: "POST",
             headers: {
