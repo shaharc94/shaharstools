@@ -99,12 +99,23 @@
         <p>ברוכים הבאים לאתר המרכז את הכלים שפיתחתי במטרה להפוך את העבודה לקלה, מהירה ויעילה יותר. כאן תוכלו למצוא פתרונות חכמים לאוטומציה, ניהול משימות, תקשורת, עיבוד נתונים ותכנות.</p>
         <p>הכלים באתר:</p>
         <div class="tool-list">
-            <a class="tool" onclick="trackClick('כלי ליצירת קישור ישיר לצ׳אט בווטסאפ') href="https://shaharc94.github.io/whatsapplinker/" target="_blank">🔗 כלי ליצירת קישור ישיר לצ׳אט בווטסאפ</a>
-            <a class="tool" onclick="trackClick('כלי להעברת משתנים מסטוריליין לגוגל שיטס') href="https://shaharc94.github.io/storylinegooglesheetcodeassistant/" target="_blank">📊 כלי להעברת משתנים מסטוריליין לגוגל שיטס</a>
-            <a class="tool" onclick="trackClick('כלי לזיהוי כפילויות בקובץ אקסל') href="https://shaharc94.github.io/duplicatesfinder/" target="_blank">📑 כלי לזיהוי כפילויות בקובץ אקסל</a>
-            <a class="tool" onclick="trackClick('כלי ליצירה מהירה של הודעה לקביעת שיחה עם לקוח') href="https://shaharc94.github.io/automsg/automsg.html" target="_blank">💬 כלי ליצירה מהירה של הודעה לקביעת שיחה עם לקוח </a>
-            <a class="tool" onclick="trackClick('כלי לעריכת סקריפטים בשפות HTML, CSS, JavaScript') href="https://shaharc94.github.io/codeeditor/" target="_blank">💻 כלי לעריכת סקריפטים בשפות HTML, CSS, JavaScript</a>
-            <a class="tool" onclick="trackClick('כלי לחישוב הנחות') href="https://improve-itil.github.io/discount/" target="_blank">💰 כלי לחישוב הנחות</a>
+            <a class="tool" href="https://shaharc94.github.io/whatsapplinker/" target="_blank" 
+               onclick="trackClick('כלי ליצירת קישור ישיר לצ׳אט בווטסאפ', event)">🔗 כלי ליצירת קישור ישיר לצ׳אט בווטסאפ</a>
+            
+            <a class="tool" href="https://shaharc94.github.io/storylinegooglesheetcodeassistant/" target="_blank" 
+               onclick="trackClick('כלי להעברת משתנים מסטוריליין לגוגל שיטס', event)">📊 כלי להעברת משתנים מסטוריליין לגוגל שיטס</a>
+            
+            <a class="tool" href="https://shaharc94.github.io/duplicatesfinder/" target="_blank" 
+               onclick="trackClick('כלי לזיהוי כפילויות בקובץ אקסל', event)">📑 כלי לזיהוי כפילויות בקובץ אקסל</a>
+            
+            <a class="tool" href="https://shaharc94.github.io/automsg/automsg.html" target="_blank" 
+               onclick="trackClick('כלי ליצירה מהירה של הודעה לקביעת שיחה עם לקוח', event)">💬 כלי ליצירה מהירה של הודעה לקביעת שיחה עם לקוח</a>
+            
+            <a class="tool" href="https://shaharc94.github.io/codeeditor/" target="_blank" 
+               onclick="trackClick('כלי לעריכת סקריפטים בשפות HTML, CSS, JavaScript', event)">💻 כלי לעריכת סקריפטים בשפות HTML, CSS, JavaScript</a>
+            
+            <a class="tool" href="https://improve-itil.github.io/discount/" target="_blank" 
+               onclick="trackClick('כלי לחישוב הנחות', event)">💰 כלי לחישוב הנחות</a>
         </div>
         <div class="suggestion-form">
             <h2>יש לך רעיון לכלי חדש?</h2>
@@ -126,13 +137,20 @@
     </div>
     
     <script>
-            function trackClick(toolName) {
+            function trackClick(toolName, event) {
+            event.preventDefault(); // מונע מעבר מיידי לכתובת החדשה
+        
             fetch("https://script.google.com/macros/s/AKfycbxD9AAqMxxHRkes_TJiqZq7X19otrqAj7ftdB_jjjcI40YZ3COEWl8rOEmfG-PjY1l-/exec", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ tool: toolName })
-                });
-            }
+            })
+            .then(() => {
+                // לאחר שליחת הנתונים, לפתוח את הלינק
+                window.open(event.target.href, "_blank");
+            })
+            .catch(error => console.error("Error:", error));
+        }
             document.getElementById("submit-button").addEventListener("click", function(event) {
             event.preventDefault();
             
