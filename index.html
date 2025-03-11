@@ -137,21 +137,6 @@
         </div>
     </div>
     <script>
-            function trackClick(toolName, event) {
-            event.preventDefault(); // מונע מעבר מיידי לכתובת החדשה
-        
-            fetch("https://script.google.com/macros/s/AKfycbxD9AAqMxxHRkes_TJiqZq7X19otrqAj7ftdB_jjjcI40YZ3COEWl8rOEmfG-PjY1l-/exec", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                mode: "no-cors",
-                body: JSON.stringify({ tool: toolName })
-            })
-            .then(() => {
-                // לאחר שליחת הנתונים, לפתוח את הלינק
-                window.open(event.target.href, "_blank");
-            })
-            .catch(error => console.error("Error:", error));
-        }
             document.getElementById("submit-button").addEventListener("click", function(event) {
             event.preventDefault();
             
